@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore | Premium Gadgets</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Tech<span>Store</span></div>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for gadgets..." onkeyup="filterProducts()">
+        </div>
+        <div class="nav-icons">
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Upgrade Your Tech Stack</h1>
+        <p>Exclusive deals for BTech Students</p>
+    </header>
+
+    <div class="container">
+        <main id="product-list" class="grid-container">
+            </main>
+    </div>
+
+    <div id="cart-sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>Your Cart</h2>
+            <button onclick="toggleCart()" class="close-btn">&times;</button>
+        </div>
+        <ul id="live-cart-items"></ul>
+        <div class="sidebar-footer">
+            <h3>Subtotal: ₹<span id="total-price">0</span></h3>
+            <button id="proceed-btn" onclick="window.location.href='checkout.html'">Checkout Now</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

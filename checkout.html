@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Checkout - TechGear</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div style="padding: 40px;">
+        <h1>Review Your Order</h1>
+        <div id="order-summary"></div>
+        <h3>Total Amount: ₹<span id="checkout-total">0</span></h3>
+
+        <hr>
+
+        <h2>Shipping Requirements</h2>
+        <form id="checkout-form">
+            <input type="text" id="name" placeholder="Full Name" required><br><br>
+            <input type="email" id="email" placeholder="Email Address" required><br><br>
+            <textarea id="address" placeholder="Shipping Address" required></textarea><br><br>
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+    <script>
+        // Get cart from storage
+        const cart = JSON.parse(localStorage.getItem('myCart')) || [];
+        const summaryDiv = document.getElementById('order-summary');
+        let total = 0;
+
+        // Display items
+        cart.forEach(item => {
+            const p = document.createElement('p');
+            p.innerText = `${item.name} - ₹${item.price}`;
+            summaryDiv.appendChild(p);
+            total += item.price;
+        });
+        document.getElementById('checkout-total').innerText = total;
+
+        // Handle Form Submission
+        document.getElementById('checkout-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            alert(`Thank you, ${name}! Your order of ₹${total} has been placed.`);
+            
+            // Clear cart after order
+            localStorage.removeItem('myCart');
+            window.location.href = 'index.html'; 
+        });
+    </script>
+</body>
+</html>
